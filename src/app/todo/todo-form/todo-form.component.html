@@ -1,0 +1,28 @@
+<div class="container mt-5">
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">title</label>
+    <input type="text" [(ngModel)]="todo.title" class="form-control" id="exampleFormControlInput1" placeholder="title">
+  </div>
+  <div class="mb-3">
+    @if(options.length){
+    <select class="form-select" [(ngModel)]="todo.userId" aria-label="Default select example" >
+      <option [value]="0">Select User</option>
+        @for(option of options; track option) {
+          <option [value]="option.id">{{option.name}}</option>
+        }
+      </select>
+    }
+  </div>
+  <div class="mb-3">
+    <label class="form-check-label" style="margin-right: 10px;" for="flexSwitchCheckChecked">Completed</label>
+    <input class="form-check-input" [(ngModel)]="todo.completed" type="checkbox" role="switch" id="flexSwitchCheckChecked">
+  </div>
+  @if(id == 0) {
+    <button type="button" (click)="addOrUpdate()" class="btn btn-primary">Add</button>
+  } @else {
+    <button type="button" (click)="addOrUpdate()" class="btn btn-primary">Update</button>
+  }
+  &nbsp;&nbsp;
+  <button type="button" style="margin-left: 5px;" (click)="cancel()" class="btn btn-primary">Cancel</button>
+
+</div>

@@ -1,0 +1,22 @@
+<div class="d-flex align-items-center py-4 bg-body-tertiary" data-new-gr-c-s-check-loaded="14.1182.0" data-gr-ext-installed="">
+<main style="max-width: 330px;" class="form-signin w-100 m-auto">
+  <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+  <div class="form-floating">
+    <input type="email" [(ngModel)]="userName"  class="form-control" id="floatingInput" placeholder="name@example.com">
+    <label for="floatingInput">Email address</label>
+  </div>
+  <div class="form-floating">
+    <input type="password" [(ngModel)]="passowrd"   class="form-control" id="floatingPassword" placeholder="Password">
+    <label for="floatingPassword">Password</label>
+  </div>
+
+  <div class="form-check text-start my-3">
+    <label style="color: red;" class="form-check-label" for="flexCheckDefault">
+      {{error}}
+    </label>
+  </div>
+  <button (click)="login()" class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
+
+</main>
+</div>

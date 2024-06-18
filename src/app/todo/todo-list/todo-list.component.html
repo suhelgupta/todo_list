@@ -1,0 +1,60 @@
+<div class="container" style="margin-top: 20px;">
+
+    <div style="display: flex;">
+      <div class="col-3" style="margin-right: 10px;">
+        <div class="form-check form-switch">
+          <label class="form-check-label" for="flexSwitchCheckChecked">Completed</label>
+          <input class="form-check-input" [(ngModel)]="filter.completed" (ngModelChange)="getbyComplete($event)" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+        </div>
+      </div>
+      <div class=" col-3 mb-3">
+        @if(options.length){
+        <select class="form-select" [(ngModel)]="filter.userId" (ngModelChange)="getbyComplete($event)" aria-label="Default select example" >
+          <option [value]="0">Select User</option>
+            @for(option of options; track option) {
+              <option [value]="option.id">{{option.name}}</option>
+            }
+          </select>
+        }
+      </div>
+      <div class="col ml-auto " style="display: flex;">
+        <div style="margin-left: auto;">
+          <button type="button" style="margin-left: 5px;" (click)="getAll()" class="btn btn-primary">Show All</button>
+          <button type="button" style="margin-left: 5px;" (click)="edit(0)" class="btn btn-primary">Add</button>
+        </div>
+
+      </div>
+
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">User</th>
+        <th scope="col">title</th>
+        <th scope="col">completed</th>
+        <th scope="col">View</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    @if(tasks) {
+      @for(task of tasks; track task) {
+        <tr>
+          <th scope="row">{{task.id}}</th>
+          <td>{{getUserName(task.userId)}}</td>
+          <td>{{task.title}}</td>
+          <td>
+            <input class="form-check-input" [(ngModel)]="task.completed" disabled type="checkbox" role="switch" id="flexSwitchCheckChecked">
+          </td>
+          <td style="color: blue;"><a (click)="edit(task.id)">edit</a></td>
+        </tr>
+      }
+    }
+    </tbody>
+  </table>
+
+</div>
+
+<router-outlet></router-outlet>
